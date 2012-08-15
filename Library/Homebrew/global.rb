@@ -49,7 +49,7 @@ if not defined? HOMEBREW_BREW_FILE
 end
 
 HOMEBREW_PREFIX = Pathname.new(HOMEBREW_BREW_FILE).dirname.parent # Where we link under
-HOMEBREW_REPOSITORY = Pathname.new(HOMEBREW_BREW_FILE).realpath.dirname.parent # Where .git is found
+HOMEBREW_REPOSITORY = Pathname.new(HOMEBREW_BREW_FILE).dirname.parent # Where .git is found
 HOMEBREW_LIBRARY = HOMEBREW_REPOSITORY/"Library"
 
 # Where we store built products; /usr/local/Cellar if it exists,
