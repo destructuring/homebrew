@@ -42,7 +42,7 @@ function setup_homebrew {
   ln -nfs $shome/bin/brew $HOMEBREW/bin/
   rsync -ia $shome/share $HOMEBREW/
   mkdir -p $HOMEBREW/Library/LinkedKegs
-  for nm_lib in $(ls -d $shome/Library/* | cut -d/ -f3 | grep -v LinkedKegs); do
+  for nm_lib in $( (set +f; ls -d $shome/Library/*; set -f) | cut -d/ -f3 | grep -v LinkedKegs); do
     ln -nfs $shome/Library/$nm_lib $HOMEBREW/Library/
   done
 }
