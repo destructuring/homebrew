@@ -18,3 +18,5 @@ unset LDFLAGS CPPFLAGS CC CXX
 #export CPPFLAGS="-I$HOMEBREW/include"
 #export CC="$HOMEBREW/bin/gcc"
 #export CXX="$HOMEBREW/bin/g++"
+
+export HOMEBREW_CACHE=$shome/distfiles

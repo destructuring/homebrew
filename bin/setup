@@ -30,12 +30,21 @@ function main {
 }
 
 function setup_homebrew {
-  export homebrew="$FLAGS_install"
+  export HOMEBREW="$FLAGS_install"
+
+  dir_software="${HOMEBREW//\//_}"
+  mkdir -p "$shome/vault/homebrew/distfiles"
+  mkdir -p "$shome/vault/homebrew/software/$dir_software"
+  mkdir -p "$HOMEBREW"
+  ln -vnfs "$shome/vault/homebrew/software/$dir_software" "$HOMEBREW/software"
 
   mkdir -p "$HOMEBREW/bin"
   ln -nfs $shome/bin/brew $HOMEBREW/bin/
-  ln -nfs $shome/Library $HOMEBREW/
-  ln -nfs $shome/share $HOMEBREW/
+  rsync -ia $shome/share $HOMEBREW/
+  mkdir -p $HOMEBREW/Library/LinkedKegs
+  for nm_lib in Aliases Contributions Formula Homebrew; do
+    ln -nfs $shome/Library/$nm_lib $HOMEBREW/Library/
+  done
 }
 
 # define command line options:
