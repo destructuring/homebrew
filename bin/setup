@@ -32,16 +32,15 @@ function main {
 function setup_homebrew {
   export homebrew="$FLAGS_install"
 
-  #dir_software="${homebrew//\//_}"
-  #mkdir -p "$shome/vault/homebrew/distfiles"
-  #mkdir -p "$shome/vault/homebrew/software/$dir_software"
-  #mkdir -p "$homebrew"
-  #ln -vnfs "$shome/vault/homebrew/software/$dir_software" "$homebrew/software"
+  mkdir -p "$HOMEBREW/bin"
+  ln -nfs $shome/bin/brew $HOMEBREW/bin/
+  ln -nfs $shome/Library $HOMEBREW/
+  ln -nfs $shome/share $HOMEBREW/
 }
 
 # define command line options:
 #   var name, default, description, short option
-DEFINE_string 'install' "${homebrew:-$shome/local}" 'homebrew install' 'I'
+DEFINE_string 'install' "${HOMEBREW:-$shome/local}" 'homebrew install' 'I'
 
 # parse the command-line
 parse_command_line "$@" || exit $?
