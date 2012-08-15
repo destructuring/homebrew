@@ -20,4 +20,4 @@ unset LDFLAGS CPPFLAGS CC CXX
 #export CXX="$HOMEBREW/bin/g++"
 
 phome="$(cd -P -- "$(dirname -- "${BASH_SOURCE}")/.." && pwd -P)"
-export HOMEBREW_CACHE=$shome/distfiles
+export HOMEBREW_CACHE=$phome/distfiles
