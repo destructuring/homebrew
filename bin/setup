@@ -42,9 +42,12 @@ function setup_homebrew {
   ln -nfs $shome/bin/brew $HOMEBREW/bin/
   rsync -ia $shome/share $HOMEBREW/
   mkdir -p $HOMEBREW/Library/LinkedKegs
-  for nm_lib in $( (set +f; ls -d $shome/Library/*; set -f) | cut -d/ -f3 | grep -v LinkedKegs); do
+  set +f
+  for nm_lib in $(ls -d $shome/Library/* | grep -v '/LinkedKegs$'); do
+    nm_lib=${nm_lib##*/}
     ln -nfs $shome/Library/$nm_lib $HOMEBREW/Library/
   done
+  set -f
 }
 
 # define command line options:
