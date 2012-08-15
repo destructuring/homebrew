@@ -3,7 +3,7 @@ require 'extend/pathname'
 class Keg < Pathname
   def initialize path
     super path
-    raise "#{to_s} is not a valid keg" unless parent.parent.realpath == HOMEBREW_CELLAR
+    raise "#{to_s} is not a valid keg" unless parent.parent.realpath == HOMEBREW_CELLAR.realpath
     raise "#{to_s} is not a directory" unless directory?
   end
 
@@ -15,7 +15,7 @@ class Keg < Pathname
   def self.for path
     path = path.realpath
     while not path.root?
-      return Keg.new(path) if path.parent.parent == HOMEBREW_CELLAR
+      return Keg.new(path) if path.parent.parent == HOMEBREW_CELLAR.realpath
       path = path.parent.realpath # realpath() prevents root? failing
     end
     raise NotAKegError, "#{path} is not inside a keg"
