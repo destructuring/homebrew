@@ -42,7 +42,7 @@ function setup_homebrew {
   ln -nfs $shome/bin/brew $HOMEBREW/bin/
   rsync -ia $shome/share $HOMEBREW/
   mkdir -p $HOMEBREW/Library/LinkedKegs
-  for nm_lib in Aliases Contributions Formula Homebrew; do
+  for nm_lib in $(ls -d $shome/Library/* | cut -d/ -f3 | grep -v LinkedKegs); do
     ln -nfs $shome/Library/$nm_lib $HOMEBREW/Library/
   done
 }
