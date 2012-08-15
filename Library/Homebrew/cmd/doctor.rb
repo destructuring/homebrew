@@ -551,7 +551,7 @@ end
 
 def check_for_config_scripts
   return unless HOMEBREW_CELLAR.exist?
-  real_cellar = HOMEBREW_CELLAR.realpath
+  real_cellar = HOMEBREW_CELLAR
 
   config_scripts = []
 
@@ -621,7 +621,7 @@ def check_for_symlinked_cellar
     <<-EOS.undent
       Symlinked Cellars can cause problems.
       Your Homebrew Cellar is a symlink: #{HOMEBREW_CELLAR}
-                      which resolves to: #{HOMEBREW_CELLAR.realpath}
+                      which resolves to: #{HOMEBREW_CELLAR}
 
       The recommended Homebrew installations are either:
       (A) Have Cellar be a real directory inside of your HOMEBREW_PREFIX
@@ -639,7 +639,7 @@ def check_for_multiple_volumes
   volumes = Volumes.new
 
   # Find the volumes for the TMP folder & HOMEBREW_CELLAR
-  real_cellar = HOMEBREW_CELLAR.realpath
+  real_cellar = HOMEBREW_CELLAR
 
   tmp_prefix = ENV['HOMEBREW_TEMP'] || '/tmp'
   tmp = Pathname.new `/usr/bin/mktemp -d #{tmp_prefix}/homebrew-brew-doctor-XXXX`.strip
