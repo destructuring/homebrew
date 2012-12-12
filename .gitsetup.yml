@@ -1,0 +1,6 @@
+---
+remotes:
+  vendor: https://github.com/mxcl/homebrew
+  primary: git@github.com:destructuring/homebrew
+  secondary: git@destructuring.org:destructuring/homebrew
+  sh: https://github.com/destructuring/jason
