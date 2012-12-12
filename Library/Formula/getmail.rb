@@ -2,8 +2,8 @@ require 'formula'
 
 class Getmail < Formula
   homepage 'http://pyropus.ca/software/getmail/'
-  url 'http://pyropus.ca/software/getmail/old-versions/getmail-4.32.0.tar.gz'
-  sha1 '2c3d7a7ba8550b32d0f51d60d683a630695fffd9'
+  url 'http://pyropus.ca/software/getmail/old-versions/getmail-4.35.0.tar.gz'
+  sha1 'bed02772defbdbb865ed5258c41a63bacaf14686'
 
   def install
     scripts = %w[ getmail getmail_fetch getmail_maildir getmail_mbox ]
